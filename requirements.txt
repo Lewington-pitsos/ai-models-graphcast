@@ -1,1 +1,3 @@
-git+https://github.com/deepmind/graphcast.git
+git+https://github.com/Lewington-pitsos/graphcast.git@fix-requirements
+ai_models
+earthkit
