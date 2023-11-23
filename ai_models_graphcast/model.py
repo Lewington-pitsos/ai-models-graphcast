@@ -242,7 +242,7 @@ class GraphcastModel(Model):
             )
 
             if self.debug:
-                output.to_netcdf("output.nc")
+                output.to_netcdf(self.path + '-full.nc')
 
         with self.timer("Saving output data"):
             save_output_xarray(
