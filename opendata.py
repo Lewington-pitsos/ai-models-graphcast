@@ -1,13 +1,32 @@
 from ecmwf.opendata import Client
+import datetime
+import requests
+from prediction import Prediction
 
 client = Client()
 
-for date in [20231120, 20231121, 20231122, 20231123]:
-	for time in [0]:
+p = Prediction(datetime.datetime(2023, 11, 17, 6), 91, 6)
+predicted_dates = p.predicted_dates(lower_bound=datetime.datetime(2023, 11, 19, 23, 59, 59))
+
+has_worked_at_least_once = False
+worked_count = 0
+for (step, d) in predicted_dates:
+	day = str(d.year) + str(d.month) + str(d.day)
+	try: 
 		client.retrieve(
-			time=time,
-			step=240,
+			date=day,
+			time=d.hour,
+			step=step,
 			type="fc",
 			param=["2t", "msl"],
-			target=f"cruft/odata-{date}-{time}.grib2"
+			target=f"cruft/odata/{step}-{day}-{d.hour}.grib2"
 		)
+		print('downloaded', day, d.hour, step)
+		has_worked_at_least_once = True
+		worked_count += 1
+	except requests.exceptions.HTTPError as e:
+		print('failed to get', day, d.hour, step, e)
+		if has_worked_at_least_once:
+			break
+
+print('downloaded', worked_count, 'files')
