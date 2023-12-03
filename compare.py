@@ -2,19 +2,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 import climetlab as cml
 import xarray
+from prediction import load_predictions
 
-def load_predictions(pred_root):
-    pred_date_data = cml.load_source("file", pred_root)
-    for message in pred_date_data:
-        pred_start = message.datetime()
-        break
-
-    pred = xarray.open_dataset(pred_root + '-full.nc')
-    absolute_times = np.datetime64(pred_start) + pred.time.values
-    pred = pred.assign_coords(time=absolute_times)
-    pred = pred.reindex(lat=list(reversed(pred.lat.values)))
-      
-    return pred
 
 
 def array_stats(arr):
@@ -35,21 +24,15 @@ def array_stats(arr):
 
 p = load_predictions("cruft/pred/-16-output")
 r = xarray.open_dataset('cruft/era5/-16-era5.nc')
-
-print(r.time)
-print(p.time)
-
 rmses = []
 times = []
 for i, time in enumerate(p.time.values):
     pred = p.sel(time=time, batch=0)
-    # pred = r.sel(time=time, number=0, surface=0)
 
     try:
         re = r.sel(time=time, number=0, surface=0)
 
         pred_t2 = pred['2m_temperature'].values - 273.15
-        # pred_t2 = pred['t2m'].values - 273.15
 
         re_t2 = re['t2m'].values - 273.15
 
@@ -98,8 +81,6 @@ for i, time in enumerate(p.time.values):
     except KeyError:
         print('no reanalysis for time', time)
 plt.plot(times, rmses)
-
-
 plt.legend(['graphCast', 'step0', 'step@t-1'])
 
 # tilt x axis labels
@@ -107,6 +88,7 @@ plt.xticks(rotation=45)
 plt.xlabel('Time')
 plt.ylabel('Prediction vs Reanalysis RMSE')
 plt.title('RMSE of 2m Temperature Predictions vs Reanalysis')
+plt.grid()  
 
 # add a legend 
 # plt.legend(['RMSE'])

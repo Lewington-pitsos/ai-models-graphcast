@@ -1,5 +1,21 @@
+import climetlab as cml
+import xarray
+import numpy as np
 import datetime
 from ai_models_graphcast.input import CF_NAME_SFC
+
+def load_predictions(pred_root):
+    pred_date_data = cml.load_source("file", pred_root)
+    for message in pred_date_data:
+        pred_start = message.datetime()
+        break
+
+    pred = xarray.open_dataset(pred_root + '-full.nc')
+    absolute_times = np.datetime64(pred_start) + pred.time.values
+    pred = pred.assign_coords(time=absolute_times)
+    pred = pred.reindex(lat=list(reversed(pred.lat.values)))
+      
+    return pred
 
 class Prediction():
 	def __init__(self, start_date, forcast_length, step_size, vars=CF_NAME_SFC.values()) -> None:

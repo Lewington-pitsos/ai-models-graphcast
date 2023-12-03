@@ -5,7 +5,7 @@ from prediction import Prediction
 
 client = Client()
 
-p = Prediction(datetime.datetime(2023, 11, 17, 6), 91, 6)
+p = Prediction(datetime.datetime(2023, 11, 17, 12), 240, 6)
 predicted_dates = p.predicted_dates(lower_bound=datetime.datetime(2023, 11, 19, 23, 59, 59))
 
 has_worked_at_least_once = False
@@ -26,7 +26,7 @@ for (step, d) in predicted_dates:
 		worked_count += 1
 	except requests.exceptions.HTTPError as e:
 		print('failed to get', day, d.hour, step, e)
-		if has_worked_at_least_once:
-			break
+		# if has_worked_at_least_once:
+		# 	break
 
 print('downloaded', worked_count, 'files')
