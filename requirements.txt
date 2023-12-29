@@ -2,3 +2,4 @@ jax[cuda11_pip]
 git+https://github.com/Lewington-pitsos/graphcast.git@fix-requirements
 ai_models
 earthkit
+pytest

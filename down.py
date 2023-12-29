@@ -32,7 +32,7 @@ for date, hours in predicted_dates:
 
 print(all_ds)
 
-filename = 'cruft/era5/-16-era5.nc'
+filename = 'cruft/era5/-20231220-era5.nc'
 os.makedirs(os.path.dirname(filename), exist_ok=True)
 
 ds = xarray.concat([d.to_xarray() for d in all_ds], dim='time')

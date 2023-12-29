@@ -12,18 +12,15 @@ The model weights are made available for use under the terms of the Creative Com
 
 
 you will need python 3.10 or greater
-
-To install the package, run:
-
 ```bash
-pip install ai-models-graphcast
+sudo apt install python-is-python3
+sudo apt install python3-pip
+sudo apt install nvidia-cuda-toolkit
 ```
 
 This will install the package and most of its dependencies.
 
 Then to install graphcast dependencies (and Jax on GPU):
-
-
 
 ### Graphcast and Jax
 
@@ -31,7 +28,7 @@ Graphcast depends on Jax, which needs special installation instructions for your
 
 Please see the [installation guide](https://github.com/google/jax#installation) to follow the correct instructions.
 
-ip install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html has worked in the past
+pip install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html has worked in the past
 
 We have prepared two `requirements.txt` you can use. A CPU and a GPU version:
 
