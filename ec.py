@@ -1,4 +1,4 @@
-from prediction import load_predictions
+from statelist import load_predictions
 import xarray
 
 p = load_predictions("cruft/pred/-6-output")

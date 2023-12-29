@@ -2,9 +2,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import climetlab as cml
 import xarray
-from prediction import load_predictions
-
-
+from statelist import load_predictions
 
 def array_stats(arr):
     stats = {

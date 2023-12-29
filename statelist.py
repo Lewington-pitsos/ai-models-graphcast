@@ -17,7 +17,7 @@ def load_predictions(pred_root):
       
     return pred
 
-class Prediction():
+class StateList():
 	def __init__(self, start_date, forcast_length, step_size, vars=CF_NAME_SFC.values()) -> None:
 		self.start_date = start_date
 		self.forcast_length = forcast_length

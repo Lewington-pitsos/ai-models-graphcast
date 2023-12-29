@@ -1,11 +1,11 @@
 from ecmwf.opendata import Client
 import datetime
 import requests
-from prediction import Prediction
+from statelist import StateList
 
 client = Client()
 
-p = Prediction(datetime.datetime(2023, 11, 17, 12), 240, 6)
+p = StateList(datetime.datetime(2023, 11, 17, 12), 240, 6)
 predicted_dates = p.predicted_dates(lower_bound=datetime.datetime(2023, 11, 19, 23, 59, 59))
 
 has_worked_at_least_once = False
