@@ -85,8 +85,8 @@ params = {
        145.5 , 145.75, 144.25, 144.5 , 144.75, 145.  , 145.25, 145.5 ,
        145.75],
 	"hourly": "temperature_2m",
-	"start_date": "2023-12-23",
-	"end_date": "2024-01-02",
+	"start_date": "2023-12-22",
+	"end_date": "2024-01-01",
 }
 
 df = get_om_data(params)

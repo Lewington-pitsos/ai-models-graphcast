@@ -9,7 +9,7 @@ import xarray
 # 	upper_bound=datetime.datetime(2023, 11, 19, 3)
 # )
 
-p = StateList(datetime.datetime(2023, 12, 22, 6), 241, 12)
+p = StateList(datetime.datetime(2023, 12, 22, 12), 241, 6)
 predicted_dates = p.dates_mapped_to_hours(
 	upper_bound=datetime.datetime(2024, 1, 7, 23)
 )
