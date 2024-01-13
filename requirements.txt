@@ -3,3 +3,5 @@ git+https://github.com/Lewington-pitsos/graphcast.git@fix-requirements
 ai_models
 earthkit
 pytest
+openmeteo-requests
+requests_cache
