@@ -6,3 +6,4 @@
 # nor does it submit to any jurisdiction.
 
 __version__ = "0.0.4"
+from ai_models_graphcast.input import CF_NAME_SFC

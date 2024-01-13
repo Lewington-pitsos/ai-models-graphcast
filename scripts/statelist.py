@@ -2,7 +2,16 @@ import climetlab as cml
 import xarray
 import numpy as np
 import datetime
-from ai_models_graphcast.input import CF_NAME_SFC
+
+CF_NAME_SFC = {
+    "10u": "10m_u_component_of_wind",
+    "10v": "10m_v_component_of_wind",
+    "2t": "2m_temperature",
+    "lsm": "land_sea_mask",
+    "msl": "mean_sea_level_pressure",
+    "tp": "total_precipitation_6hr",
+    "z": "geopotential_at_surface",
+}
 
 def load_predictions(pred_root):
     pred_date_data = cml.load_source("file", pred_root)

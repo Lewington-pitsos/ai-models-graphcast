@@ -73,7 +73,7 @@ params = {
 	"longitude": 144.9633,
 	"hourly": "temperature_2m",
 	"start_date": "2023-12-23",
-	"end_date": "2024-01-07",
+	"end_date": "2024-01-02",
 }
 
 df = get_om_data(params)
