@@ -1,5 +1,8 @@
 # ai-models-graphcast
 
+[Google Colab](https://colab.research.google.com/drive/13RHUKtwzjxB32QqU6auoIyoMa7Ibx3hX?usp=sharing)
+[Youtube Walkthrough of Colab](https://www.youtube.com/watch?v=BTyhgp9Hugc)
+
 `ai-models-graphcast` is an [ai-models](https://github.com/ecmwf-lab/ai-models) plugin to run Google Deepmind's [GraphCast](https://github.com/deepmind/graphcast).
 
 GraphCast: Learning skillful medium-range global weather forecasting, arXiv preprint: 2212.12794, 2022. https://arxiv.org/abs/2212.12794
